@@ -32,25 +32,6 @@
 #include "max7219.h"
 
 /******************************************************************************
- * Private macros.
- ******************************************************************************/
-
-#define REG_NO_OP           0x00
-#define REG_DIGIT_0         0x01
-#define REG_DIGIT_1         0x02
-#define REG_DIGIT_2         0x03
-#define REG_DIGIT_3         0x04
-#define REG_DIGIT_4         0x05
-#define REG_DIGIT_5         0x06
-#define REG_DIGIT_6         0x07
-#define REG_DIGIT_7         0x08
-#define REG_DECODE_MODE     0x09
-#define REG_INTENSITY       0x0A
-#define REG_SCAN_LIMIT      0x0B
-#define REG_SHUTDOWN        0x0C
-#define REG_DISPLAY_TEST    0x0F
-
-/******************************************************************************
  * Public method definitions.
  ******************************************************************************/
 
@@ -152,7 +133,6 @@ static void write(uint16_t address, uint16_t value)
     CS_PIN = SET_PIN_LOW;
     SPI1_Exchange16bit(Data_to_Transfer);
     CS_PIN = SET_PIN_HIGH;
-
 }
 /**************************************************************************//**
 * setup
@@ -170,6 +150,7 @@ static void write(uint16_t address, uint16_t value)
     // Set shutdown mode.
     setShutdownMode(ShutdownMode_NormalOperation);
  }
+ 
  /**************************************************************************//**
 * test digit
  ******************************************************************************/

@@ -48,7 +48,7 @@
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/spi1.h"
 #include "mcc_generated_files/pin_manager.h"
-#include "max7219.h"
+#include "display_clock.h"
 
 /*
                          Main application
@@ -59,11 +59,15 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     //setup display
-    setup_max7219();
-    test();
-    
+    uint16_t i = 0;
     while (1)
     {
+        while(i<1000)
+        {
+            i ++;
+        }
+        i = 0;
+        state_machine();
 
     }
     return 1;

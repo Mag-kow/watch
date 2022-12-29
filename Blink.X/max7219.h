@@ -70,12 +70,46 @@
  * \enum DecodeModes
  * \typedef DecodeMode_t
  **********************************************************************/
-#include <xc.h> // include processor files - each processor file is guarded.  
+#include "xc.h" // include processor files - each processor file is guarded.  
 #include "mcc_generated_files/spi1.h"
 
 #define CS_PIN _LATB15
 #define SET_PIN_LOW 0
 #define SET_PIN_HIGH 1
+/******************************************************************************
+ * Private macros.
+ ******************************************************************************/
+
+#define REG_NO_OP           0x00
+#define REG_DIGIT_0         0x01
+#define REG_DIGIT_1         0x02
+#define REG_DIGIT_2         0x03
+#define REG_DIGIT_3         0x04
+#define REG_DIGIT_4         0x05
+#define REG_DIGIT_5         0x06
+#define REG_DIGIT_6         0x07
+#define REG_DIGIT_7         0x08
+#define REG_DECODE_MODE     0x09
+#define REG_INTENSITY       0x0A
+#define REG_SCAN_LIMIT      0x0B
+#define REG_SHUTDOWN        0x0C
+#define REG_DISPLAY_TEST    0x0F
+
+/******************************************************************//**
+ * \enum Digits
+ * \typedef Digit_t
+ **********************************************************************/
+typedef enum 
+{
+    Digit_0 = 0x01,
+    Digit_1 = 0x02,
+    Digit_2 = 0x03,
+    Digit_3 = 0x04,
+    Digit_4 = 0x05,
+    Digit_5 = 0x06,
+    Digit_6 = 0x07,
+    Digit_7 = 0x08
+} Digit_t;
 
 typedef enum 
 {
@@ -151,21 +185,6 @@ typedef enum
     TestMode        = 0x01
 } DisplayTestMode_t;
 
-/******************************************************************//**
- * \enum Digits
- * \typedef Digit_t
- **********************************************************************/
-typedef enum 
-{
-    Digit_0 = 0x01,
-    Digit_1 = 0x02,
-    Digit_2 = 0x03,
-    Digit_3 = 0x04,
-    Digit_4 = 0x05,
-    Digit_5 = 0x06,
-    Digit_6 = 0x07,
-    Digit_7 = 0x08
-} Digit_t;
 
 /******************************************************************//**
  * \enum Characters
@@ -247,7 +266,7 @@ void setDisplayTestMode(DisplayTestMode_t mode);
  * \param	digit		    Digit to write.
  * \param	character	    Character to write.
  **********************************************************************/
-void writeDigit(Digit_t digit, Character_t  character);
+extern void writeDigit(Digit_t digit, Character_t  character);
 
 
 /******************************************************************//**
@@ -260,15 +279,14 @@ void writeDigit(Digit_t digit, Character_t  character);
  **********************************************************************/
 static void write(uint16_t address, uint16_t value);
 
-/******************************************************************//**
- * Setup
- **********************************************************************/
- void setup_max7219(void);
 /**************************************************************************//**
+* setup
+ ******************************************************************************/
+ void setup_max7219(void);
+ /**************************************************************************//**
 * test digit
  ******************************************************************************/
  void test(void);
- 
 #endif // MAX7219_h
 #ifdef	__cplusplus
 extern "C" {

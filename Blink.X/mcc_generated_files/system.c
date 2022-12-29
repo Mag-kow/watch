@@ -93,6 +93,7 @@
 #include "system.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "tmr1.h"
 #include "spi1.h"
 
 void SYSTEM_Initialize(void)
@@ -101,6 +102,7 @@ void SYSTEM_Initialize(void)
     INTERRUPT_Initialize();
     CLOCK_Initialize();
     SPI1_Initialize();
+    TMR1_Initialize();
 }
 
 /**
