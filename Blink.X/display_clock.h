@@ -33,6 +33,7 @@
 
 #include "xc.h" // include processor files - each processor file is guarded.  
 #include "max7219.h"
+#include "stdio.h"
 typedef enum 
 {
     Digit_0 = 0x01,
@@ -88,8 +89,13 @@ typedef enum
 /**************************************************************************//**
 * watch state machine
  ******************************************************************************/
- void state_machine(void);
+ void display_clock_state_machine( void );
  
+ /**************************************************************************//**
+* change time
+ ******************************************************************************/
+ void change_time(void );
+  
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */

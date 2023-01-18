@@ -48,8 +48,10 @@
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/spi1.h"
 #include "mcc_generated_files/pin_manager.h"
+#include "mcc_generated_files/uart1.h"
 #include "display_clock.h"
-
+#include "message_handler.h"
+#include "stdio.h"
 /*
                          Main application
  */
@@ -60,15 +62,33 @@ int main(void)
     SYSTEM_Initialize();
     //setup display
     uint16_t i = 0;
+    uint32_t j = 0;
+
     while (1)
     {
-        while(i<1000)
-        {
-            i ++;
-        }
+//        if((UART1_IsRxReady())==true)
+//        {
+//            data = UART1_Read();
+//            IO_RB5_Toggle();
+//            if (data = 2)
+//            {
+//                set=1;
+//            }
+//        }
         i = 0;
-        state_machine();
-
+        display_clock_state_machine();
+        read_function();
+        message_handler_state_machine();
+        if(j<100)
+        {
+            j ++;
+        }
+        else
+        {       
+            j = 0;
+//            printf("I am running\n");
+ 
+        }
     }
     return 1;
 }

@@ -95,6 +95,7 @@
 #include "traps.h"
 #include "tmr1.h"
 #include "spi1.h"
+#include "uart1.h"
 
 void SYSTEM_Initialize(void)
 {
@@ -103,6 +104,7 @@ void SYSTEM_Initialize(void)
     CLOCK_Initialize();
     SPI1_Initialize();
     TMR1_Initialize();
+    UART1_Initialize();
 }
 
 /**

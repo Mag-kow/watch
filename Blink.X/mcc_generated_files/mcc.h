@@ -55,6 +55,7 @@
 #include "traps.h"
 #include "tmr1.h"
 #include "spi1.h"
+#include "uart1.h"
 
 #warning "This file will be removed in future MCC releases. Use system.h instead."
 

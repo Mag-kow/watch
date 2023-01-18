@@ -99,7 +99,7 @@ typedef struct _Clock{
 * watch state machine
  ******************************************************************************/
  
- void state_machine(void)
+ void display_clock_state_machine( void )
  {
      switch (clock.clock_state)
      {
@@ -125,10 +125,15 @@ typedef struct _Clock{
          }
          case ERROR_MODE:
          {
+             test();
+             clock.clock_state = ERROR_MODE;
              break;
              //error mode
          }
                 
      }
  }
-
+ void change_time(void )
+ {
+    clock.clock_state = MODIFY_MODE;
+ }
